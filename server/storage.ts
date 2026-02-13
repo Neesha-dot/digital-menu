@@ -1,38 +1,52 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
 
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import {
+  items,
+  categories,
+  type Item,
+  type InsertItem,
+  type Category,
+  type InsertCategory
+} from "@shared/schema";
+import { eq, ilike, and } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getItems(filters?: { categoryId?: number; isVeg?: boolean; search?: string; featured?: boolean }): Promise<Item[]>;
+  getItem(id: number): Promise<Item | undefined>;
+  getCategories(): Promise<Category[]>;
+  createItem(item: InsertItem): Promise<Item>;
+  createCategory(category: InsertCategory): Promise<Category>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
+export class DatabaseStorage implements IStorage {
+  async getItems(filters?: { categoryId?: number; isVeg?: boolean; search?: string; featured?: boolean }): Promise<Item[]> {
+    const conditions = [];
+    if (filters?.categoryId) conditions.push(eq(items.categoryId, filters.categoryId));
+    if (filters?.isVeg !== undefined) conditions.push(eq(items.isVeg, filters.isVeg));
+    if (filters?.featured !== undefined) conditions.push(eq(items.isFeatured, filters.featured));
+    if (filters?.search) conditions.push(ilike(items.name, `%${filters.search}%`));
 
-  constructor() {
-    this.users = new Map();
+    return await db.select().from(items).where(and(...conditions));
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getItem(id: number): Promise<Item | undefined> {
+    const [item] = await db.select().from(items).where(eq(items.id, id));
+    return item;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async getCategories(): Promise<Category[]> {
+    return await db.select().from(categories);
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async createItem(insertItem: InsertItem): Promise<Item> {
+    const [item] = await db.insert(items).values(insertItem).returning();
+    return item;
+  }
+
+  async createCategory(insertCategory: InsertCategory): Promise<Category> {
+    const [category] = await db.insert(categories).values(insertCategory).returning();
+    return category;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
