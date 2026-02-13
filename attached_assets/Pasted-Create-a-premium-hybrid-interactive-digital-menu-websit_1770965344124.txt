@@ -1,0 +1,717 @@
+Create a premium hybrid interactive digital menu website for "Bomb Rolls & Bowls" restaurant with cutting-edge animations and modern UX patterns.
+
+=== TECH STACK ===
+- Frontend: React 18 with Vite
+- Styling: Tailwind CSS
+- Animations: Framer Motion + React Spring
+- Icons: Lucide React
+- Routing: React Router DOM v6
+- State: React Context API + Local Storage
+- Gestures: React Use Gesture
+
+=== DESIGN SYSTEM ===
+
+Brand Colors:
+- Primary Red: #E63946
+- Primary Yellow: #FFD700
+- Cream Background: #FFF8F0
+- Dark Text: #1A1A1A
+- Light Text: #6B7280
+- Success Green: #10B981
+- Card White: #FFFFFF
+
+Typography:
+- Headings: 'Poppins', sans-serif (Bold 700)
+- Body: 'Inter', sans-serif (Regular 400, Medium 500)
+- Accent: 'Bangers', cursive (for logo/special text)
+
+Shadows:
+- sm: 0 1px 2px rgba(0,0,0,0.05)
+- md: 0 4px 6px rgba(0,0,0,0.1)
+- lg: 0 10px 15px rgba(0,0,0,0.1)
+- xl: 0 20px 25px rgba(0,0,0,0.15)
+
+Border Radius:
+- sm: 8px
+- md: 12px
+- lg: 16px
+- xl: 24px
+
+=== PAGE STRUCTURE & HYBRID APPROACH ===
+
+PAGE 1: SPLASH/LANDING PAGE (Story-Style)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Design:
+- Full-screen red gradient background (#E63946 to #D62839)
+- Checkered pattern border at top (30px height, animated slide-in)
+- Checkered pattern border at bottom (30px height)
+
+Center Content:
+- Large circular logo (300px diameter on desktop, 200px on mobile)
+  * Dark red/burgundy circle background with subtle pattern
+  * White "BOMB ROLLS & BOWLS" text inside
+  * Small bomb icon with sparkle
+  * Glow effect around circle
+  
+- Tagline (below logo, 40px gap):
+  "Where every bite is a flavor bomb waiting to detonate!"
+  * White text, 24px, centered
+  * Subtle text shadow
+  * Letter spacing: 1px
+
+- CTA Button (60px below tagline):
+  Large yellow button: "EXPLORE MENU"
+  * Width: 280px, Height: 64px
+  * Background: #FFD700
+  * Black text, bold, 20px
+  * Border: 3px solid black
+  * Border radius: 32px
+  * Box shadow: 4px 4px 0 black (brutalist style)
+
+Animations (using Framer Motion):
+- Logo: Scale from 0 to 1 (0.8s, spring), then continuous subtle pulse (scale 1 to 1.05, 2s loop)
+- Checkered borders: Slide in from sides (0.6s, ease-out)
+- Tagline: Fade + slide up from bottom (delay 0.4s, duration 0.6s)
+- Button: Fade + slide up (delay 0.8s), hover: lift up + shadow increase + scale 1.05
+- Background: Subtle animated gradient shift
+
+Interactions:
+- Button click: Scale down (0.95) briefly, then navigate with page transition
+- Swipe up gesture: Navigate to menu selection
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAGE 2: MENU SELECTION (Immersive Cards)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Header:
+- Fixed navbar (height: 70px)
+- Red background (#E63946)
+- Left: Small logo (40px) + "BOMB ROLLS" text
+- Right: Home icon (back to landing)
+- Bottom border: Checkered pattern (20px)
+
+Content Area:
+- Cream background (#FFF8F0)
+- Vertical centered layout
+- Title: "Choose Your Menu" (48px, bold, centered, with decorative lines)
+
+Two Large Cards (stacked vertically on mobile, side-by-side on desktop):
+
+Card 1 - VEG MENU:
+- Size: 500px × 350px (desktop), full-width × 300px (mobile)
+- Background: Beautiful food image (vegetables, paneer, rolls)
+- Overlay: Gradient from transparent to rgba(0,0,0,0.5)
+- Green indicator badge (top-right): "🥬 VEG"
+- Large centered text: "Veg Menu" (white, 48px, bold)
+- Subtitle: "Fresh, Flavorful, Pure Veg" (white, 18px)
+- Border: 4px solid #10B981 (green)
+- Border radius: 20px
+- Box shadow on hover: 0 20px 40px rgba(16, 185, 129, 0.3)
+
+Card 2 - NON-VEG MENU:
+- Same dimensions as Card 1
+- Background: Food image (chicken, meat dishes)
+- Red indicator badge (top-right): "🍗 NON-VEG"
+- Large text: "Non-Veg Menu"
+- Subtitle: "Bold Flavors, Premium Proteins"
+- Border: 4px solid #E63946 (red)
+- Box shadow on hover: 0 20px 40px rgba(230, 57, 70, 0.3)
+
+Animations:
+- Page enter: Fade in
+- Cards entrance: Stagger (Card 1 slides from left, Card 2 from right, 0.2s delay)
+- Hover: Scale 1.03, lift (translateY -8px), shadow increase, subtle tilt (2deg rotation)
+- Click: Scale 0.98, then navigate with slide transition
+- Floating animation: Continuous subtle up-down motion (2s loop)
+
+Interactions:
+- Tap/Click card: Navigate to main menu (veg or non-veg)
+- Swipe left/right: Switch card focus (mobile)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAGE 3: MAIN MENU (Netflix-Style Horizontal Scrollers)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Header (Sticky):
+- Same as Menu Selection page
+- Add: Search icon (click opens search overlay)
+- Add: Filter icon (All/Veg toggle switch)
+
+Hero Section (only on first load/scroll top):
+- Height: 400px (desktop), 300px (mobile)
+- Background: Beautiful restaurant interior image with parallax
+- Overlay: Gradient from transparent to cream
+- Yellow "FEATURED" badge (top-left)
+- Large heading: "Signature Bomb Rolls" (white, 64px)
+- Subheading: "Crafted with love, bursting with flavor"
+- Checkered border at bottom
+
+Filter Toggle (sticky, just below hero):
+- Background: White
+- Toggle switch: "ALL" (red) / "VEG" (green)
+- Smooth color transition
+- Shows item count: "Showing 24 items"
+
+Main Content - Category Sections (Netflix Style):
+
+Each Category Block:
+┌─────────────────────────────────────────┐
+│ 🌯 BOMB ROLLS          [See All →]      │
+├─────────────────────────────────────────┤
+│ ← [Card] [Card] [Card] [Card] [Card] → │
+│     Horizontal scroll area              │
+└─────────────────────────────────────────┘
+
+Category Header:
+- Category icon + name (left): 32px, bold
+- Item count: "(12 items)" (gray, 16px)
+- "See All →" link (right): Yellow text, hover underline
+
+Horizontal Scroll Container:
+- Flex row with gap: 20px
+- Padding: 20px
+- Smooth momentum scroll
+- Hide scrollbar (custom navigation arrows appear on hover - desktop)
+- Snap-to-card on mobile
+- Swipe gesture enabled
+
+Item Cards in Scroller (3D Flip Cards):
+
+Card Dimensions:
+- Desktop: 280px × 380px
+- Mobile: 240px × 340px
+
+Front Face (Default View):
+- White background
+- Top: Food image (fills top 60%, object-fit: cover)
+- Image has subtle zoom on hover
+- Type indicator badge (top-right on image):
+  * Veg: Green circle with "●"
+  * Non-Veg: Red circle with "●"
+- Bottom section (40%):
+  * Item name (18px, bold, black)
+  * Variant text: "(Chicken)" or "(Paneer)" - gray, 14px, italic
+  * Price (24px, bold, red): "₹150"
+  * Heart icon (bottom-right): Outline, fills on click with scale animation
+- Border: 2px solid #E5E7EB
+- Border radius: 16px
+- Box shadow: sm (default), lg (hover)
+
+Back Face (Recipe Preview - shows on flip):
+- Yellow background (#FFD700)
+- Black border: 3px solid
+- Content:
+  * Small item image at top (80px height)
+  * "Quick Recipe" heading
+  * Foundation: "Rice with spices..." (2 lines max)
+  * Ingredients list: 3-4 items with checkmarks
+  * "Tap for full recipe →" link (bottom)
+- Same dimensions as front
+
+Flip Animation:
+- Trigger: Click/tap on card
+- Animation: 3D rotateY 180deg
+- Duration: 0.6s
+- Easing: cubic-bezier(0.4, 0, 0.2, 1)
+- Backface culling for smooth flip
+
+Card Hover (Desktop):
+- Lift: translateY(-12px)
+- Shadow increase: sm → xl
+- Scale: 1.02
+- Image zoom: scale(1.1)
+- Transition: 0.3s ease
+
+Scroll Navigation (Desktop):
+- Left/Right arrow buttons appear on container hover
+- Positioned absolute (left: -20px, right: -20px)
+- Circular buttons (50px diameter)
+- White background, red icon
+- Box shadow
+- Click: Smooth scroll by 600px
+
+Category Sections (4 total):
+1. 🌯 Bomb Rolls (12 items)
+2. 🍜 Bomb Bowls (8 items)
+3. 🥗 Bomb Salads (8 items)
+4. 🥪 Bomb Panini (8 items)
+
+Spacing:
+- Between categories: 60px
+- Bottom padding: 100px (for footer)
+
+Scroll Animations (React Intersection Observer):
+- Category headers: Fade + slide from left when entering viewport
+- Card containers: Stagger fade-in for cards (0.08s delay each)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAGE 4: FULL RECIPE MODAL (Bottom Sheet / Full Modal)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Trigger: 
+- Click "Tap for full recipe" on card back
+- Or click item name
+- Or click card (if enabled in settings)
+
+Mobile Design (Bottom Sheet):
+- Slides up from bottom
+- Handle bar at top (drag to dismiss)
+- Max-height: 90vh
+- Scrollable content
+- Backdrop: Blur + dark overlay (rgba(0,0,0,0.6))
+
+Desktop Design (Center Modal):
+- Fixed position, centered
+- Max-width: 700px
+- Height: 85vh
+- Backdrop: Blur + dark overlay
+- Close button (X) top-right
+
+Modal Animation:
+- Mobile: Slide from bottom (translateY 100% → 0)
+- Desktop: Scale from center (scale 0.9 → 1) + fade
+- Backdrop: Fade in
+- Duration: 0.4s
+- Easing: spring animation
+
+Modal Content Structure:
+
+Header Section:
+- Close button (top-right): X icon, 40px, hover: rotate 90deg
+- Item name (32px, bold, black, centered)
+- Type indicator + Variant: Green/Red dot + "(Chicken)"
+- Divider line
+
+Image Gallery (Swipeable):
+- Height: 300px
+- 1-3 images per item
+- Horizontal swipe
+- Dots indicator below
+- Smooth transition
+
+Price Section:
+- Large price display: "₹150" (40px, red, bold)
+- Optional: Crossed-out original price if on sale
+- Add to cart button (yellow, full-width on mobile)
+
+Recipe Details (Tabs or Accordion):
+
+Tab 1 - 📝 DESCRIPTION:
+- Short tagline (2-3 lines)
+- What makes it special
+- Font: 18px, line-height: 1.6
+
+Tab 2 - 🥘 THE FOUNDATION:
+- Base ingredient explanation
+- Cooking method overview
+- Visual: Small rice/bread icon
+
+Tab 3 - 🌟 MAIN INGREDIENTS:
+- Bulleted list with custom checkmarks (✓)
+- Each ingredient as separate line with animation
+- Icon per ingredient type:
+  * 🍗 Protein
+  * 🥬 Vegetables  
+  * 🧂 Spices
+  * 🍯 Sauces
+- Entrance animation: Slide from left, stagger 0.1s
+
+Tab 4 - 👨‍🍳 PREPARATION STYLE:
+- Step-by-step if available, or summary
+- Cooking techniques highlighted
+- Time estimate if available
+
+Tab 5 - ✨ SPECIAL NOTE:
+- Chef's secret
+- What makes it unique
+- Highlighted box (yellow background, black border)
+
+Tab 6 - 🌶️ SPICE LEVEL:
+- Visual meter:
+  * Mild: ●○○○ (1/4 filled)
+  * Medium: ●●○○ (2/4 filled)
+  * Hot: ●●●○ (3/4 filled)
+  * Extra Hot: ●●●● (4/4 filled)
+- Colors: Gray (empty), Red (filled)
+- Description: "Medium - Perfect for most palates"
+
+Nutritional Info (Optional):
+- Calories, Protein, Carbs, Fat
+- Clean icon-based layout
+- Collapsible section
+
+Allergen Info:
+- Icon badges: 🥜 🥛 🌾 (nuts, dairy, gluten)
+- "Contains" vs "May contain" sections
+
+Footer Actions:
+- Heart icon: Add to favorites (toggle)
+- Share icon: Share this item
+- Order button: Yellow, prominent, sticky at bottom
+
+Animation Details:
+- Tab content: Fade + slide up when switching
+- Ingredients: Sequential reveal (0.1s stagger)
+- Spice meter: Fill animation from left
+- Images: Smooth cross-fade on swipe
+
+Gestures:
+- Swipe down: Dismiss modal (mobile)
+- Swipe left/right: Navigate between items (if enabled)
+- Pinch zoom: On images
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ADDITIONAL FEATURES & PAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SEARCH OVERLAY:
+- Trigger: Click search icon in header
+- Full-screen overlay (white background)
+- Large search input at top
+- Live results below (as user types)
+- Filter chips: Category, Price, Spice level
+- Results show: Image + Name + Price
+- Click result: Navigate to item modal
+- Esc key or back button: Close
+
+FAVORITES PAGE:
+- Access: Heart icon in menu (shows count badge)
+- Grid layout of saved items
+- Same card style as main menu
+- Empty state: "No favorites yet" with browse button
+- Stored in localStorage
+
+FOOTER (Sticky across all pages):
+- Height: 80px
+- Background: Yellow (#FFD700)
+- Black checkered border at bottom
+- Content (centered):
+  * Instagram icon + @bomb_rolls_and_bowls (clickable)
+  * Phone icon + 7387744600 (clickable, opens dialer)
+- Social icons: 40px, black, hover: scale 1.1
+
+LOADING STATES:
+- Page transitions: Smooth fade
+- Card loading: Skeleton with shimmer effect
+  * Gray rectangles matching card layout
+  * Animated gradient shimmer (left to right)
+  * Duration: 1.5s loop
+- Image loading: Blur-up technique
+  * Tiny blurred preview → Full image
+  * Smooth cross-fade
+
+ERROR STATES:
+- Network error: Red banner at top with retry button
+- Image load failure: Placeholder with icon
+- 404 page: Playful bomb illustration + "This page exploded!" + Home button
+
+OFFLINE SUPPORT:
+- Service worker for basic caching
+- Offline banner: "You're offline" (gray, top)
+- Cached pages still accessible
+- Show cached badge on data
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SAMPLE MENU DATA STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create JSON data with this structure:
+
+{
+  "categories": [
+    {
+      "id": "rolls",
+      "name": "Bomb Rolls",
+      "icon": "🌯",
+      "description": "Wrapped perfection with explosive flavors"
+    },
+    // ... more categories
+  ],
+  "items": [
+    {
+      "id": "chatpata-roll-chicken",
+      "name": "Chatpata Roll",
+      "category": "rolls",
+      "type": "non-veg",
+      "variant": "Chicken",
+      "price": 150,
+      "originalPrice": null,
+      "images": [
+        "https://placeholder-url/roll1.jpg",
+        "https://placeholder-url/roll1-2.jpg"
+      ],
+      "description": "Medium spicy flavors infused from the traditional Tucks Masala",
+      "recipe": {
+        "foundation": "Fluffy basmati rice cooked with aromatic spices and herbs, providing the perfect flavor base for this explosive roll.",
+        "ingredients": [
+          "Tender marinated chicken pieces, grilled to smoky perfection",
+          "Homemade green chutney with fresh mint, coriander, and green chilies",
+          "Sweet and tangy tamarind chutney for balance",
+          "Fresh diced onions, tomatoes, and crisp cucumber",
+          "Crispy sev topping for that perfect crunch",
+          "Our secret chatpata masala blend"
+        ],
+        "preparation": "Tawa-grilled wrap with light butter brushing for an irresistibly crispy exterior while keeping the inside warm and flavorful.",
+        "specialNote": "Our signature chatpata masala creates the perfect balance of tangy, spicy, and savory that makes every bite memorable!",
+        "spiceLevel": "medium"
+      },
+      "allergens": ["gluten", "dairy"],
+      "nutritional": {
+        "calories": 450,
+        "protein": 25,
+        "carbs": 55,
+        "fat": 15
+      },
+      "isFeatured": true,
+      "isBestSeller": true,
+      "isNew": false,
+      "available": true
+    },
+    // ... more items (minimum 36 items total)
+  ]
+}
+
+Data for all categories (based on uploaded menu):
+- Bomb Rolls: 8 items (4 veg variants + 4 non-veg)
+- Bomb Bowls: 8 items (4 veg variants + 4 non-veg)
+- Bomb Salads: 8 items (4 veg variants + 4 non-veg)
+- Bomb Panini: 8 items (4 veg variants + 4 non-veg)
+
+Each item should have variants:
+- Veg: Aloo (₹110-120), Paneer (₹150-170)
+- Non-Veg: Chicken (₹150-190)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RESPONSIVE BREAKPOINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Mobile (< 640px):
+- Single column layouts
+- Full-width cards
+- Bottom sheet modals
+- Touch-friendly targets (min 44px)
+- Swipe gestures primary
+- Hamburger menu
+- Stacked content
+
+Tablet (640px - 1024px):
+- 2-column grids
+- Side-by-side cards on menu selection
+- Larger images
+- Hybrid navigation (hamburger + some visible)
+
+Desktop (> 1024px):
+- 3-4 columns for item grids
+- Full horizontal scrollers visible
+- Hover effects active
+- Mouse interactions
+- Keyboard shortcuts (Esc, Arrow keys)
+- Full modals (not bottom sheets)
+
+Ultra-wide (> 1536px):
+- Max-width container: 1400px
+- More spacing
+- Larger images
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PERFORMANCE & OPTIMIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Images:
+- Lazy loading (Intersection Observer)
+- WebP format with JPG fallback
+- Responsive images (srcset)
+- Blur-up loading technique
+- Image compression (80% quality)
+
+Code:
+- Code splitting by route
+- Lazy load modals/heavy components
+- Memoize expensive computations
+- Virtual scrolling for large lists (if >50 items visible)
+- Debounce search input (300ms)
+
+Animations:
+- Use transform & opacity only (GPU accelerated)
+- Reduce motion for accessibility (prefers-reduced-motion)
+- Cancel animations on page exit
+- 60fps target
+
+Caching:
+- LocalStorage for favorites
+- SessionStorage for menu state
+- Service Worker for offline support (optional)
+
+Fonts:
+- Preload critical fonts
+- Font-display: swap
+- Subset fonts (Latin only)
+
+Bundle:
+- Tree-shaking
+- Minification
+- Compression (gzip)
+- Target bundle size: <500kb initial
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ACCESSIBILITY (WCAG 2.1 AA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Required:
+- Semantic HTML (header, nav, main, footer, article)
+- ARIA labels on interactive elements
+- Keyboard navigation (Tab, Enter, Esc, Arrows)
+- Focus indicators (visible outline)
+- Alt text for all images
+- Heading hierarchy (h1 → h6)
+- Color contrast ratio 4.5:1 minimum
+- Touch targets minimum 44×44px
+- Skip to content link
+- Screen reader announcements for dynamic content
+- Reduced motion support
+
+Keyboard Shortcuts:
+- Esc: Close modal/overlay
+- Arrow keys: Navigate horizontal scrollers
+- Enter/Space: Select card
+- Tab: Move between interactive elements
+- /: Focus search
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROJECT STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+src/
+├── components/
+│   ├── common/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── CheckeredBorder.jsx
+│   │   ├── LoadingSkeleton.jsx
+│   │   └── ErrorBoundary.jsx
+│   ├── menu/
+│   │   ├── CategoryScroller.jsx
+│   │   ├── ItemCard.jsx
+│   │   ├── ItemCardFront.jsx
+│   │   ├── ItemCardBack.jsx
+│   │   ├── RecipeModal.jsx
+│   │   ├── TypeToggle.jsx
+│   │   └── SearchOverlay.jsx
+│   ├── animations/
+│   │   ├── PageTransition.jsx
+│   │   ├── FadeIn.jsx
+│   │   ├── SlideIn.jsx
+│   │   └── StaggerChildren.jsx
+│   └── layout/
+│       ├── PageContainer.jsx
+│       └── Section.jsx
+├── pages/
+│   ├── Landing.jsx
+│   ├── MenuSelection.jsx
+│   ├── MainMenu.jsx
+│   ├── Favorites.jsx
+│   └── NotFound.jsx
+├── data/
+│   ├── menuData.json
+│   └── constants.js
+├── context/
+│   ├── MenuContext.jsx
+│   └── FavoritesContext.jsx
+├── hooks/
+│   ├── useIntersectionObserver.js
+│   ├── useLocalStorage.js
+│   └── useMediaQuery.js
+├── utils/
+│   ├── animations.js
+│   └── helpers.js
+├── styles/
+│   └── globals.css
+├── App.jsx
+├── main.jsx
+└── index.html
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TECHNICAL REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Package.json dependencies:
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "framer-motion": "^10.16.0",
+    "@react-spring/web": "^9.7.0",
+    "@use-gesture/react": "^10.3.0",
+    "lucide-react": "^0.300.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32"
+  }
+}
+
+Tailwind Config (custom):
+- Extend colors with brand palette
+- Custom animations (pulse, float, shimmer)
+- Custom shadows
+- Font families
+
+Vite Config:
+- Fast refresh
+- Optimized build
+- Asset handling
+
+ESLint Config:
+- React hooks rules
+- Best practices
+- Accessibility plugin
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FINAL DELIVERABLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Fully functional React application
+2. All 4 pages implemented with hybrid design approach
+3. Netflix-style horizontal scrollers
+4. 3D flip card interactions
+5. Bottom sheet modals (mobile) / center modals (desktop)
+6. Smooth Framer Motion animations throughout
+7. Complete menu data (36+ items with full recipes)
+8. Responsive design (mobile-first)
+9. Accessible (WCAG 2.1 AA)
+10. Performance optimized (<3s load time)
+11. Clean, well-commented code
+12. README with:
+    - Setup instructions
+    - Features list
+    - Tech stack
+    - Deployment guide
+13. Deployment-ready build
+
+IMPORTANT NOTES:
+- Use placeholder images initially (add real images later)
+- Focus on smooth 60fps animations
+- Test on actual mobile devices
+- Ensure all gestures work properly
+- Make it feel like a premium app
+- Prioritize user experience over complexity
+
+Generate the complete code now with all features, animations, and optimizations as specified. Make it production-ready and visually stunning!
