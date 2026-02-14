@@ -26,22 +26,29 @@
   --primary-foreground: 0 0% 98%;
   
   --secondary: var(--primary-yellow);
-  --secondary-foreground: var(--text-dark);
-  
-  --muted: 33 30% 90%;
-  --muted-foreground: 33 10% 40%;
+  --secondary-foreground: 0 0% 10%;
   
   --accent: var(--primary-yellow);
-  --accent-foreground: var(--text-dark);
-  
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
+  --accent-foreground: 0 0% 10%;
 
-  --border: 33 20% 85%;
-  --input: 33 20% 85%;
-  --ring: var(--primary-red);
-  
   --radius: 1rem;
+}
+
+@layer utilities {
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.95;
+      transform: scale(1.02);
+    }
+  }
 }
 
 @layer base {
