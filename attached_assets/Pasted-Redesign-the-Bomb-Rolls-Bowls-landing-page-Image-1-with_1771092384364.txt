@@ -1,0 +1,55 @@
+Redesign the "Bomb Rolls & Bowls" landing page (Image 1) with these specific requirements:
+
+CONTEXT:
+- This is a STATIC digital menu (no ordering/cart functionality)
+- Customers scan QR code and browse menu while waiting for waiter
+- Purpose: Let customers decide their order BEFORE waiter arrives
+- Menu should explain what each dish contains (many customers don't know)
+
+CURRENT ISSUES TO FIX:
+- Logo looks like "Sizzle & Spice" - we need "BOMB ROLLS & BOWLS" branding
+- Button says "Start Ordering" but we want "VIEW MENU" or "EXPLORE MENU"
+- Text says "Tap to experience culinary magic" - change to menu browsing context
+
+DESIGN REQUIREMENTS:
+
+1. LOGO & BRANDING:
+   - Use the bomb logo from Image 4 (red circle with bomb icon)
+   - Restaurant name: "BOMB ROLLS & BOWLS" (white bold text)
+   - Tagline: "Explosive Flavors Await" or "Asian Fusion Delights"
+   - Keep the red circular background but use Image 4's color scheme
+
+2. MAIN CALL-TO-ACTION BUTTON:
+   - Text: "EXPLORE OUR MENU 🍜" or "VIEW MENU 📖"
+   - Make it large, prominent, white background with red text
+   - Smooth hover effect with slight scale animation
+
+3. SECONDARY TEXT (below button):
+   - Replace "Tap to experience culinary magic" with:
+   - "Browse dishes • Read descriptions • Order when ready"
+   - Or: "Take your time exploring while you wait"
+
+4. ADD FEATURE BADGES (3 small icons below secondary text):
+   - Icon 1: 📋 "Detailed Descriptions"
+   - Icon 2: 🌶️ "Spice Levels"
+   - Icon 3: 🥜 "Allergen Info"
+   - Display horizontally, small, subtle
+
+5. COLOR SCHEME:
+   - Background: Red gradient (like current but richer)
+   - Primary text: White
+   - Accent: Yellow/Gold (for highlights)
+   - Button: White with red text
+
+6. ANIMATIONS:
+   - Logo: Gentle fade-in from top
+   - Button: Pulse effect to draw attention
+   - Background: Subtle food-related pattern (bowls, chopsticks) at 5% opacity
+
+KEEP:
+- Mobile-first responsive design
+- Clean, uncluttered layout
+- Professional look matching AIRAVATA TECHNOLOGIES standards
+
+OUTPUT:
+Complete HTML with embedded CSS and JavaScript in single file.
